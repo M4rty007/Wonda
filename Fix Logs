@@ -1,0 +1,20 @@
+Fix the following issue in the existing Wonda project.
+
+**Problem:** [Describe the issue]
+
+**Expected behavior:** [Describe what should happen]
+
+**Error output or additional context:** [Paste the error, if available]
+
+Instructions:
+1. Inspect the relevant files and reproduce or diagnose the issue before changing code.
+2. Identify the root cause instead of applying a superficial workaround.
+3. Make the smallest reliable change that fixes the problem.
+4. Preserve the existing Wonda design, color palette, mobile layout, architecture, and working features.
+5. Do not rewrite unrelated files or introduce unnecessary dependencies.
+6. Check for regressions in related functionality.
+7. Run the relevant tests, type checks, or build commands available in the project.
+8. Report the root cause, files changed, checks performed, and any remaining limitations.
+9. Do not claim the issue is fixed unless you have verified the correction.
+
+If the issue cannot be reproduced, explain what additional information is needed before making speculative changes.

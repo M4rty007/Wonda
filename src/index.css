@@ -1,0 +1,28 @@
+:root {
+  --navy: #0f2743;
+  --blue: #1f8ef1;
+  --cyan: #22d3ee;
+  --red: #ef2d2d;
+  --amber: #f5b301;
+  --amber-soft: #ffd23f;
+  --paper: #ffffff;
+  --mist: #eef1f4;
+  --ink: #1c2733;
+  --muted: #66788a;
+  --radius: 16px;
+}
+* { box-sizing: border-box; }
+html, body, #root { height: 100%; margin: 0; }
+body {
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+  color: var(--ink);
+  background: #9fb0bc;
+}
+button { font: inherit; }
+input, select {
+  font: inherit; width: 100%;
+  padding: 8px 10px; margin-top: 4px;
+  border: 1px solid #cbd5df; border-radius: 10px;
+}
+label { display: block; font-size: 13px; margin: 8px 0; }
+.leaflet-container { font: inherit; }

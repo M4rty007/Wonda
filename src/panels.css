@@ -1,0 +1,61 @@
+.avatar { width: 56px; height: 56px; border-radius: 50%; background: var(--mist);
+  display: flex; align-items: center; justify-content: center; color: var(--navy); }
+.row { display: flex; justify-content: space-between; gap: 8px; align-items: center;
+  border-top: 1px solid var(--mist); padding: 8px 0; font-size: 14px; }
+.row-actions { display: flex; gap: 4px; }
+.icon-btn { border: none; background: var(--mist); color: var(--navy); width: 30px; height: 30px;
+  border-radius: 50%; cursor: pointer; display: inline-flex; align-items: center; justify-content: center; }
+.icon-btn.danger { background: #fde2e2; color: var(--red); }
+.speed-panel { position: absolute; left: 12px; right: 12px; bottom: calc(10px + env(safe-area-inset-bottom));
+  background: var(--paper); border-radius: 18px; z-index: 600;
+  text-align: center; padding: 8px 12px; box-shadow: 0 -2px 12px rgba(15,39,67,.18); }
+.speed-val { font-size: 32px; font-weight: 700; color: var(--navy); }
+.speed-unit { font-size: 13px; color: var(--muted); margin-left: 4px; }
+.speed-sub { display: block; font-size: 12px; color: var(--muted); }
+.link { border: none; background: none; color: var(--blue); cursor: pointer; text-decoration: underline; font-size: 12px; }
+.sheet { position: absolute; left: 12px; right: 76px; bottom: 118px; z-index: 700;
+  background: var(--paper); border-radius: var(--radius); padding: 12px;
+  box-shadow: 0 4px 20px rgba(15,39,67,.3); max-height: 52dvh; overflow: auto; }
+.sheet-head { display: flex; justify-content: space-between; align-items: center; }
+.sheet-actions { display: flex; gap: 8px; margin-top: 10px; }
+.btn { border: none; border-radius: 12px; padding: 10px 14px; cursor: pointer; font-weight: 600;
+  display: inline-flex; align-items: center; gap: 6px; font-size: 14px; }
+.btn.primary { background: var(--navy); color: #fff; }
+.btn.amber { background: var(--amber); color: var(--navy); }
+.btn.danger { background: var(--red); color: #fff; }
+.btn.ghost { background: var(--mist); color: var(--navy); }
+.btn.sm { font-size: 13px; padding: 8px 10px; }
+.btn.sm.voted { outline: 2px solid var(--blue); }
+.error { color: var(--red); font-size: 13px; }
+.warn { color: #8a6100; background: #fff4d6; border-radius: 8px; padding: 6px 8px; }
+.tiny { font-size: 12px; color: var(--muted); margin: 4px 0; }
+.dim { opacity: .8; }
+.badge { display: inline-block; font-size: 11px; font-weight: 700; border-radius: 20px; padding: 3px 10px; }
+.badge.demo { background: #fff4d6; color: #8a6100; }
+.badge.verified { background: #dcf5e3; color: #14703c; }
+.badge.unverified { background: #e3ecf5; color: var(--navy); }
+.tide-chart { width: 100%; height: 130px; background: #d7dde2; border-radius: 12px; }
+.community { border-top: 1px solid var(--mist); margin-top: 8px; padding-top: 4px; }
+.comm-row { display: flex; gap: 8px; }
+.modal-back { position: absolute; inset: 0; z-index: 900; background: rgba(15,39,67,.45);
+  display: flex; align-items: center; justify-content: center; }
+.modal { background: #fff; border-radius: var(--radius); padding: 16px; width: min(320px, 86vw); }
+.toast { position: absolute; top: 12px; left: 50%; transform: translateX(-50%); z-index: 950;
+  background: var(--navy); color: #fff; border-radius: 20px; padding: 8px 16px; font-size: 13px; }
+.wonda-pin span { display: block; width: 18px; height: 18px; border-radius: 50%;
+  border: 2px solid #fff; box-shadow: 0 1px 4px rgba(0,0,0,.4); }
+.wonda-pin-hz span { display: flex; align-items: center; justify-content: center;
+  width: 22px; height: 22px; border-radius: 50%; color: #fff; font-weight: 800;
+  border: 2px solid #fff; box-shadow: 0 1px 4px rgba(0,0,0,.4); }
+.wonda-pin-hz span.attention { background: var(--amber); color: var(--navy); }
+.wonda-pin-hz span.danger { background: var(--red); }
+.wonda-me span { font-size: 22px; color: var(--navy); text-shadow: 0 0 3px #fff; }
+.side { display: none; }
+.academic-bar { background: var(--navy); color: #fff; font-size: 11px; padding: 6px 12px; text-align: center; }
+.notice { background: #fff4d6; color: #5c4500; border-radius: 10px; padding: 8px 10px; font-size: 12px; }
+@media (min-width: 900px) {
+  .wonda { flex-direction: row; flex-wrap: wrap; }
+  .map-wrap { flex: 1; }
+  .side { display: block; width: 300px; padding: 16px; background: var(--paper); overflow: auto; }
+  .academic-bar { width: 100%; }
+}
