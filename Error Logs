@@ -1,0 +1,191 @@
+Fix the following issue in the existing Wonda project.
+
+**Problem:** The "class = menu-pill" and "class = drawer" are tied together.
+
+**Expected behavior:** Both elements should be seperate, the "menu-pill" and "drawer" should have
+there own configuration like position and padding.
+
+**Error output or additional context:** When the position of drawer is changed the menu-pill canges too,
+that's wasn't suppose to happen.
+
+Instructions:
+1. Inspect the relevant files and reproduce or diagnose the issue before changing code.
+2. Identify the root cause instead of applying a superficial workaround.
+3. Make the smallest reliable change that fixes the problem.
+4. Preserve the existing Wonda design, color palette, mobile layout, architecture, and working features.
+5. Do not rewrite unrelated files or introduce unnecessary dependencies.
+6. Check for regressions in related functionality.
+7. Run the relevant tests, type checks, or build commands available in the project.
+8. Report the root cause, files changed, checks performed, and any remaining limitations.
+9. Do not claim the issue is fixed unless you have verified the correction.
+
+If the issue cannot be reproduced, explain what additional information is needed before making speculative changes.
+
+Fix the following issue in the existing Wonda project.
+
+|*=------------------------------=*|
+
+Fix the following issue in the existing Wonda project.
+
+**Problem:** The pin points panel/"painel de marcadores" is tied with the menu pill, in the current version
+i can't edit the position of pin point panel without affecting the menu pill.
+
+**Expected behavior:** Both elements should be independent, the pin point panel shold have his own
+values like position and padding.
+
+**Error output or additional context:** When the position of pin point panel is changed the menu pill changes at the same time,
+that's wasn't suppose to happen.
+
+Instructions:
+1. Inspect the relevant files and reproduce or diagnose the issue before changing code.
+2. Identify the root cause instead of applying a superficial workaround.
+3. Make the smallest reliable change that fixes the problem.
+4. Preserve the existing Wonda design, color palette, mobile layout, architecture, and working features.
+5. Do not rewrite unrelated files or introduce unnecessary dependencies.
+6. Check for regressions in related functionality.
+7. Run the relevant tests, type checks, or build commands available in the project.
+8. Report the root cause, files changed, checks performed, and any remaining limitations.
+9. Do not claim the issue is fixed unless you have verified the correction.
+
+If the issue cannot be reproduced, explain what additional information is needed before making speculative changes.
+
+Fix the following issue in the existing Wonda project.
+
+|*=------------------------------=*|
+
+# Fix: Pin Points Panel and Menu Pill Share Positioning
+
+Fix the following bug in the existing Wonda project.
+
+## Problem
+
+The **Pin Points Panel** (`painel de marcadores`) and the **Menu Pill** are coupled: changing the Pin Points Panel's position also moves the Menu Pill. These elements should be independently configurable.
+
+## Expected behavior
+
+The Pin Points Panel and Menu Pill must have **independent positioning and spacing controls**.
+
+- Changing the Pin Points Panel's position must not affect the Menu Pill.
+- Changing the Pin Points Panel's padding must not affect the Menu Pill.
+- The Menu Pill must retain its current position, padding, and appearance when the Pin Points Panel is modified.
+- Each element must remain correctly positioned in the existing responsive mobile layout.
+- Preserve the current visual design, colors, sizes, interactions, and other working features.
+
+## Debugging instructions
+
+**Do not edit code immediately. Diagnose the source of the coupling first.**
+
+1. Locate the Pin Points Panel and Menu Pill in the codebase. Identify their components, styles, positioning rules, and any shared configuration.
+2. Trace how their positions and padding are calculated. Check for shared CSS classes, selectors, variables, component props, parent containers, inherited styles, or reused layout configuration.
+3. Identify the exact shared dependency that causes changing one element to affect the other. If possible, reproduce the behavior or verify it directly from the code.
+4. Before editing, briefly state the root cause and the smallest change that should resolve it. If the evidence is insufficient, request the specific information needed instead of guessing.
+
+## Implementation requirements
+
+- Give each element its own independent positioning and padding values.
+- Remove only the unintended dependency between them. Do not duplicate large blocks of code or introduce unnecessary abstractions.
+- Preserve existing defaults and visual placement. The Menu Pill must not move as a side effect of the fix.
+- Follow the project's existing architecture and styling conventions. Do not introduce dependencies or rewrite unrelated files.
+- If the elements intentionally share a parent container, determine whether that relationship is the actual cause before changing the layout structure.
+
+## Verification
+
+After implementing the fix:
+
+1. Change the Pin Points Panel's horizontal and vertical positioning values. Verify that the Menu Pill does not move.
+2. Change the Pin Points Panel's padding. Verify that the Menu Pill's padding and dimensions remain unchanged.
+3. Verify that the Menu Pill still works and that the Pin Points Panel remains correctly positioned on mobile and at relevant responsive breakpoints.
+4. Run the relevant available tests, type checks, and build command. Report any failures honestly; do not claim checks passed if they were not run.
+
+## Final report
+
+Summarize:
+- The confirmed root cause.
+- The files changed and why.
+- How the elements were decoupled.
+- The verification steps and their actual results.
+- Any remaining limitations.
+
+**Scope:** Fix this specific positioning bug only. Do not redesign Wonda or modify unrelated functionality.
+
+|*=------------------------------=*|
+
+# Wonda — Decouple the Pin Points Menu from the Menu Pill
+
+I need you to fix a structural UI issue in the existing Wonda project.
+
+## 1. Actual problem
+
+There are two distinct UI elements with different responsibilities:
+
+- **Pin Points Menu:** the menu that lists the map markers.
+- **Menu Pill:** the application menu responsible for accessing the profile and application settings.
+
+These two elements are currently coupled in the implementation. When I change the position of the Pin Points Menu, the Menu Pill moves along with it.
+
+This is not the intended behavior. They serve different purposes and must be independent UI elements.
+
+## 2. Required outcome
+
+**Separate the Pin Points Menu and the Menu Pill at the component and layout levels, wherever the current implementation couples them.**
+
+The Pin Points Menu must have its own independent:
+
+- Component or layout container, as appropriate for the existing architecture.
+- Horizontal and vertical positioning.
+- Margin and padding.
+- Styling and layout rules.
+- Responsive positioning behavior.
+
+The Menu Pill must retain its own independent component structure, positioning, spacing, and styling.
+
+Changing any positioning or spacing property of the Pin Points Menu must not move, resize, restyle, or otherwise affect the Menu Pill. The same independence must apply in reverse.
+
+## 3. Investigate before modifying
+
+Do not assume that this is only a CSS problem.
+
+Inspect the existing implementation and determine whether the coupling originates from:
+
+- Both menus being rendered inside a shared component or positioning container.
+- Shared CSS classes or selectors.
+- Shared positioning variables or configuration values.
+- Shared component props or state.
+- A layout rule that causes both elements to move together.
+- Another dependency discovered in the codebase.
+
+Trace the actual dependency and identify the root cause before making changes.
+
+If the elements are currently implemented as one combined component, separate their responsibilities into independent components where appropriate. If they are already separate components, remove the actual shared dependency responsible for the coupling.
+
+Do not create duplicate components unnecessarily if a smaller structural change achieves genuine independence.
+
+## 4. Implementation constraints
+
+- Preserve Wonda's existing visual identity, color palette, typography, and overall design.
+- Preserve the current appearance and functionality of both menus unless a change is necessary to establish independence.
+- Maintain the existing mobile layout and responsive behavior.
+- Do not redesign the interface or modify unrelated features.
+- Follow the project's existing architecture and naming conventions.
+- Do not introduce unnecessary dependencies.
+- Preserve all existing marker-management, profile, and settings functionality.
+
+## 5. Verification requirements
+
+After implementing the fix, verify that:
+
+1. Moving the Pin Points Menu horizontally does not move the Menu Pill.
+2. Moving the Pin Points Menu vertically does not move the Menu Pill.
+3. Changing the Pin Points Menu's padding or dimensions does not affect the Menu Pill.
+4. The Menu Pill can be positioned and styled independently of the Pin Points Menu.
+5. Both menus remain functional and correctly positioned at the relevant responsive breakpoints.
+
+Run the relevant available checks and inspect the final changes.
+
+A successful build alone is not sufficient evidence that the coupling has been removed.
+
+## 6. Required final report
+
+Explain the actual root cause, whether the issue involved component structure, CSS, shared state, or another dependency; list the files changed; describe how the elements are now independent; and report the verification results honestly.
+
+**Important:** Do not apply another superficial positioning adjustment. Fix the underlying dependency that makes these two functionally different menus behave as if they were one element. Do not claim success unless their independence has been verified.

@@ -3,7 +3,6 @@ import type { Wonda } from '../state';
 import { t } from '../i18n/translations';
 import { seedHazards, seedPoints } from '../data/seed';
 import RoutesList from './RoutesList';
-import MarkersList from './MarkersList';
 
 export default function MenuDrawer({ s }: { s: Wonda }) {
   const tr = (k: string) => t(s.lang, k);
@@ -18,18 +17,18 @@ export default function MenuDrawer({ s }: { s: Wonda }) {
   }
 
   return (
-    <nav className="menu-pill" aria-label={tr('menu.extra')}>
-      {s.menuView === 'main' && (<>
-        <button className="menu-row" onClick={() => s.setMenuView('settings')} aria-label={tr('menu.settings')}><Settings size={20} /></button>
-        <button className="menu-row" onClick={() => s.setMenuView('profile')} aria-label={tr('menu.profile')}><User size={20} /></button>
-      </>)}
+    <div className="menu-root">
+      <nav className="menu-pill" aria-label={tr('menu.extra')}>
+        <button className={`menu-row${s.menuView === 'settings' ? ' active' : ''}`} onClick={() => s.setMenuView('settings')} aria-label={tr('menu.settings')} aria-pressed={s.menuView === 'settings'}><Settings size={20} /></button>
+        <button className={`menu-row${s.menuView === 'profile' ? ' active' : ''}`} onClick={() => s.setMenuView('profile')} aria-label={tr('menu.profile')} aria-pressed={s.menuView === 'profile'}><User size={20} /></button>
+      </nav>
       {s.menuView !== 'main' && (
         <div className="drawer">
           <div className="drawer-head">
             <strong>{
               s.menuView === 'settings' ? tr('nav.settings')
               : s.menuView === 'profile' ? tr('nav.profile')
-              : s.menuView === 'routes' ? tr('nav.routes') : tr('nav.markers')
+              : tr('nav.routes')
             }</strong>
             <button className="icon-btn" aria-label={tr('action.close')} onClick={() => s.setMenuView('main')}><X size={16} /></button>
           </div>
@@ -65,9 +64,8 @@ export default function MenuDrawer({ s }: { s: Wonda }) {
             </div>
           )}
           {s.menuView === 'routes' && <RoutesList s={s} />}
-          {s.menuView === 'markers' && <MarkersList s={s} />}
         </div>
       )}
-    </nav>
+    </div>
   );
 }

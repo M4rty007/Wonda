@@ -26,7 +26,8 @@ export default function Floating({ s }: { s: Wonda }) {
       <button className="fab corner left" aria-label={tr('action.tide')}
         onClick={() => s.setTideOpen((o) => !o)}><Waves size={20} /></button>
       <button className="fab corner right" aria-label={tr('action.markers')}
-        onClick={() => { s.setMenuOpen(true); s.setMenuView('markers'); }}><MapPin size={20} /></button>
+        aria-pressed={s.markersOpen}
+        onClick={() => { s.setMarkersOpen((o) => !o); }}><MapPin size={20} /></button>
     </>
   );
 }

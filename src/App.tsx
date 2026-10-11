@@ -2,6 +2,7 @@ import { useWondaState } from './state';
 import MapView from './components/MapView';
 import Floating from './components/Floating';
 import MenuDrawer from './components/MenuDrawer';
+import MarkersList from './components/MarkersList';
 import PickSheets from './components/PickSheets';
 import RouteSheets from './components/RouteSheets';
 import TideSheet from './components/TideSheet';
@@ -31,6 +32,7 @@ export default function App() {
         <MapView s={s} />
         <Floating s={s} />
         <MenuDrawer s={s} />
+        <MarkersList s={s} />
         <PickSheets s={s} />
         <RouteSheets s={s} />
         <TideSheet s={s} />

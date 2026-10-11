@@ -27,15 +27,34 @@
 .fab.corner.left { left: 12px; }
 .fab.corner.right { right: 12px; }
 
-.menu-pill { position: absolute; top: calc(72px + env(safe-area-inset-top)); left: 12px; z-index: 700;
-  background: var(--paper); border-radius: 26px; padding: 6px;
-  box-shadow: 0 2px 10px rgba(15,39,67,.25); display: flex; flex-direction: column; gap: 4px; }
+.menu-root {
+  --menu-top: calc(72px + env(safe-area-inset-top));
+  --menu-left: 12px;
+  --menu-gap: 8px;
+  position: absolute; top: var(--menu-top); left: var(--menu-left); z-index: 700;
+  display: flex; flex-direction: row; align-items: flex-start; gap: var(--menu-gap);
+  background: none; padding: 0; }
+.menu-pill {
+  --menu-pill-pad: 6px;
+  --menu-pill-gap: 4px;
+  background: var(--paper); border-radius: 26px; padding: var(--menu-pill-pad);
+  box-shadow: 0 2px 10px rgba(15,39,67,.25); display: flex; flex-direction: column; gap: var(--menu-pill-gap); }
 
 .menu-row { border: none; background: #c9cfd6; color: var(--navy); width: 46px; height: 46px;
   border-radius: 50%; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+.menu-row.active { background: var(--navy); color: #fff; }
 
 .drawer { background: var(--paper); border-radius: var(--radius); width: 270px; max-width: 78vw;
   max-height: 60dvh; overflow: auto; box-shadow: 0 4px 20px rgba(15,39,67,.3); }
+.markers-panel {
+  --markers-top: 525px;
+  --markers-left: 116px;
+  --markers-pad-x: 12px;
+  position: absolute; top: var(--markers-top); left: var(--markers-left); z-index: 700;
+  background: var(--paper); border-radius: var(--radius); width: 270px; max-width: 72vw;
+  max-height: 60dvh; overflow: auto; box-shadow: 0 4px 20px rgba(15,39,67,.3); }
+.markers-panel-head { display: flex; justify-content: space-between; align-items: center; padding: 10px var(--markers-pad-x); }
+.markers-panel-body { padding: 0 var(--markers-pad-x) 12px; display: flex; flex-direction: column; gap: 8px; }
 .drawer-head { display: flex; justify-content: space-between; align-items: center; padding: 10px 12px; }
 .drawer-body { padding: 0 12px 12px; display: flex; flex-direction: column; gap: 8px; }
 .drawer-label { font-size: 12px; font-weight: 700; color: var(--muted); margin: 6px 0 2px; }

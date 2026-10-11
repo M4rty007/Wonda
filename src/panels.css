@@ -13,7 +13,7 @@
 .speed-unit { font-size: 13px; color: var(--muted); margin-left: 4px; }
 .speed-sub { display: block; font-size: 12px; color: var(--muted); }
 .link { border: none; background: none; color: var(--blue); cursor: pointer; text-decoration: underline; font-size: 12px; }
-.sheet { position: absolute; left: 12px; right: 76px; bottom: 118px; z-index: 700;
+.sheet { position: absolute; left: 12px; right: 76px; bottom: 194px; z-index: 700;
   background: var(--paper); border-radius: var(--radius); padding: 12px;
   box-shadow: 0 4px 20px rgba(15,39,67,.3); max-height: 52dvh; overflow: auto; }
 .sheet-head { display: flex; justify-content: space-between; align-items: center; }

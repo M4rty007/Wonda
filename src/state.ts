@@ -4,13 +4,13 @@ import { KEYS, load, save } from './lib/storage';
 import { seedHazards, seedPoints } from './data/seed';
 
 export type PickMode = null | 'point' | 'hazard' | 'route';
-export type MenuView = 'main' | 'settings' | 'profile' | 'routes' | 'markers';
+export type MenuView = 'main' | 'settings' | 'profile' | 'routes';
 
 export interface UiState {
   lang: Language; points: PointOfInterest[]; hazards: Hazard[];
   routes: SavedRoute[]; layers: LayerPrefs;
   votes: Record<string, CommunityVote>;
-  menuOpen: boolean; menuView: MenuView; tideOpen: boolean;
+  menuOpen: boolean; menuView: MenuView; markersOpen: boolean; tideOpen: boolean;
   pick: PickMode; picked: { lat: number; lng: number } | null;
   draftRoute: RouteWaypoint[]; focusRouteId: string | null;
   editingPoint: string | null; editingHz: string | null;
@@ -28,6 +28,7 @@ export function useWondaState() {
   const [votes, setVotes] = useState<Record<string, CommunityVote>>(() => load(KEYS.votes, {}));
   const [menuOpen, setMenuOpen] = useState(false);
   const [menuView, setMenuView] = useState<MenuView>('main');
+  const [markersOpen, setMarkersOpen] = useState(false);
   const [tideOpen, setTideOpen] = useState(false);
   const [pick, setPick] = useState<PickMode>(null);
   const [picked, setPicked] = useState<{ lat: number; lng: number } | null>(null);
@@ -55,6 +56,7 @@ export function useWondaState() {
   return {
     lang, setLang, points, setPoints, hazards, setHazards, routes, setRoutes,
     layers, setLayers, votes, setVotes, menuOpen, setMenuOpen, menuView, setMenuView,
+    markersOpen, setMarkersOpen,
     tideOpen, setTideOpen, pick, setPick, picked, setPicked, draftRoute, setDraftRoute,
     focusRouteId, setFocusRouteId, editingPoint, setEditingPoint, editingHz, setEditingHz,
     confirmDel, setConfirmDel, err, setErr, toast, setToast, gpsDemo, setGpsDemo, gps, setGps,
