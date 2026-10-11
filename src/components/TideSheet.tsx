@@ -20,7 +20,7 @@ export default function TideSheet({ s }: { s: Wonda }) {
 
   if (!s.tideOpen) return null;
   return (
-    <div className="sheet tide" role="dialog" aria-label={tr('tide.title')}>
+    <div className="sheet tide-sheet" role="dialog" aria-label={tr('tide.title')}>
       <div className="sheet-head">
         <strong>{tr('tide.title')}</strong>
         <button className="icon-btn" aria-label={tr('action.close')} onClick={() => s.setTideOpen(false)}><X size={16} /></button>

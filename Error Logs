@@ -256,3 +256,77 @@ Once the fix is complete, provide a concise report covering:
 - Any remaining issues or manual verification requirements.
 
 **Priority:** Fix the root cause, reuse proven solutions where appropriate, minimize changes, and preserve all existing functionality.
+
+|*=------------------------------=*|
+
+# Wonda — Bug Fix: Decouple the `sheet` and `sheet-panel` Components
+
+## Context
+
+Wonda contains two distinct UI elements that must operate independently:
+
+- `.sheet`: responsible for displaying hazard markers and fishing area information.
+- `.sheet-panel`: responsible for displaying the tide monitoring panel, which must be activated through the left-side button featuring a wavy-lines (wave) icon.
+
+Currently, modifying the `max-width` value associated with these elements affects both of them. This indicates that their styling or component structure may be coupled when they should be independently controllable.
+
+## Step 1 — Investigate the Existing Implementation
+
+Before making changes, inspect the relevant HTML, CSS, JavaScript, and component structure.
+
+- Locate every definition and usage of `.sheet` and `.sheet-panel`.
+- Identify shared CSS selectors, grouped selectors, inherited properties, CSS variables, shared component styles, or parent-child relationships that could cause changes to `max-width` to affect both elements.
+- Inspect the logic responsible for opening and closing each panel.
+- Identify the left-side wave-icon button and trace its event handler to determine how the tide monitoring panel is activated.
+- Check whether either panel depends on the other's visibility state or positioning logic.
+
+Determine the actual root cause before editing. Do not assume that the problem is exclusively caused by CSS or that the classes themselves are necessarily incorrect.
+
+## Step 2 — Implement the Fix
+
+Make the smallest reliable change that fully separates the two components.
+
+1. Ensure `.sheet` and `.sheet-panel` can have independently configured `max-width` values without unintentionally affecting one another.
+2. Remove or narrow any shared CSS rules that cause unintended cross-effects, while preserving legitimate common styles where appropriate.
+3. Keep the hazard markers and fishing area functionality associated with `.sheet`.
+4. Ensure `.sheet-panel` exclusively controls the intended presentation and behavior of the tide monitoring panel.
+5. Connect or preserve the existing left-side wave-icon button so that it opens and closes the tide monitoring panel correctly.
+6. Ensure that opening, closing, resizing, or styling one panel does not unintentionally modify the other.
+7. Preserve the existing component architecture and reuse established project patterns wherever appropriate.
+
+Do not simply rename the classes or duplicate entire stylesheets if a smaller structural or selector-level correction can solve the issue.
+
+## Step 3 — Constraints
+
+- Preserve the existing visual design, positioning, spacing, colors, animations, and responsive behavior.
+- Do not break hazard markers, fishing area information, tide monitoring functionality, or existing map interactions.
+- Do not refactor unrelated components or introduce unnecessary dependencies.
+- Preserve shared styles that are intentionally common to both panels; isolate only the properties and behaviors that need to be independent.
+- Avoid hardcoded workarounds that mask the underlying cause.
+- Follow the project's existing coding conventions.
+
+## Step 4 — Validation
+
+After implementing the fix, verify the following:
+
+1. Changing `.sheet`'s `max-width` affects only the hazard markers and fishing area panel.
+2. Changing `.sheet-panel`'s `max-width` affects only the tide monitoring panel.
+3. The left-side wave-icon button opens and closes the tide monitoring panel correctly.
+4. Both panels retain their intended content, layout, and interactions.
+5. Opening or closing one panel does not cause unintended changes to the other.
+6. The interface remains responsive, and no visual regressions are introduced.
+
+Run the available project checks when applicable. Do not claim that a test passed unless it was actually executed successfully.
+
+## Step 5 — Final Report
+
+Provide a concise report describing:
+
+- The root cause of the coupling.
+- The files modified.
+- The CSS or component changes implemented.
+- How the independence of both panels was verified.
+- The tests performed and their results.
+- Any remaining issues or manual verification requirements.
+
+**Priority:** Achieve complete styling and behavioral independence between `.sheet` and `.sheet-panel`, while preserving all existing functionality and minimizing unrelated changes.

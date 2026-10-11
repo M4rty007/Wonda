@@ -58,7 +58,6 @@ export default function App() {
         <p className="notice">{tr('notice.academic')}</p>
         <p className="tiny">{tr('sync.label')}</p>
       </aside>
-      <footer className="academic-bar">{tr('notice.academic')}</footer>
     </div>
   );
 }
