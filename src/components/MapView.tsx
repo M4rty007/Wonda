@@ -71,7 +71,7 @@ export default function MapView({ s }: { s: Wonda }) {
         )}
       </MapContainer>
       {!s.gps?.live && (
-        <div className="center-arrow" aria-hidden="true">
+        <div className="center-arrow" aria-hidden="true" title="Norte">
           <Navigation size={26} fill="#fff" color="#fff" />
         </div>
       )}

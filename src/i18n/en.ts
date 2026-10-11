@@ -13,6 +13,8 @@ const en: Record<string, string> = {
   'action.routes': 'Route editor',
   'action.tide': 'Tide monitoring',
   'action.markers': 'Markers (pin points)',
+  'action.markerPill': 'Marker actions',
+  'action.markerPanel': 'Marker panel',
   'menu.extra': 'Extra menus',
   'menu.settings': 'Settings menu',
   'menu.profile': 'Profile menu',

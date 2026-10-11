@@ -189,3 +189,70 @@ A successful build alone is not sufficient evidence that the coupling has been r
 Explain the actual root cause, whether the issue involved component structure, CSS, shared state, or another dependency; list the files changed; describe how the elements are now independent; and report the verification results honestly.
 
 **Important:** Do not apply another superficial positioning adjustment. Fix the underlying dependency that makes these two functionally different menus behave as if they were one element. Do not claim success unless their independence has been verified.
+
+|*=------------------------------=*|
+
+# Wonda — Bug Fix: Decouple the Routes Feature from the Profile & Settings Menu
+
+## Context
+
+In Wonda, the marker pill contains an option responsible for the Routes feature. Currently, this feature is coupled to the Profile & Settings menu, causing unwanted interactions between components that should operate independently.
+
+This issue is similar to the previously encountered coupling between the marker pill and the Markers panel. The previous fix may provide a useful reference for resolving the current issue.
+
+## Step 1 — Investigate the Existing Implementation
+
+Before making any changes, inspect the relevant components and identify the root cause of the coupling.
+
+- Locate the Routes feature, the Profile & Settings menu, and their associated components, state variables, event handlers, and layout logic.
+- Examine the previous fix involving the marker pill and the Markers panel. Reuse its approach where appropriate, maintaining consistency with the existing codebase.
+- Check for shared visibility states, incorrect event handlers, unnecessary component nesting, event propagation issues, and CSS or positioning dependencies.
+- Determine whether the problem originates from component structure, state management, event handling, styling, or a combination of these factors.
+
+Do not assume the root cause is identical to the previous issue. Confirm the actual cause before implementing a solution.
+
+## Step 2 — Implement the Fix
+
+Correct the underlying cause with the smallest reliable change.
+
+1. Decouple the Routes feature from the Profile & Settings menu so that each component preserves its intended behavior.
+2. Ensure that opening, closing, or interacting with one component does not unintentionally trigger, hide, reposition, or modify the other.
+3. Reuse the architectural patterns established by the previous Markers panel fix if they are appropriate for this situation.
+4. Correct shared state, event handlers, component relationships, or layout dependencies as necessary.
+5. Preserve any existing design rules governing whether these menus can remain open simultaneously. Independent behavior does not necessarily mean both menus must be open at the same time.
+6. Maintain the existing Routes functionality and the intended behavior of the Profile & Settings menu.
+
+## Step 3 — Constraints
+
+- Do not refactor unrelated components or rewrite existing functionality unnecessarily.
+- Do not introduce new dependencies, abstractions, or state management systems unless strictly necessary.
+- Preserve the existing visual design, positioning, spacing, colors, animations, transitions, and responsive behavior.
+- Do not apply superficial CSS workarounds if the actual cause is structural or related to state management.
+- Do not break the marker pill, the Markers panel, or any existing map interactions.
+- Follow the project's current architecture and coding conventions.
+
+## Step 4 — Validation
+
+After implementing the fix, verify the following behaviors:
+
+1. Interacting with Routes does not unintentionally open or modify the Profile & Settings menu.
+2. Opening or closing Profile & Settings does not unintentionally trigger or modify Routes.
+3. Each component responds correctly to its own controls.
+4. Existing menu visibility rules remain intact.
+5. The marker pill and Markers panel continue to function as intended.
+6. No visual regressions or unrelated behavioral changes have been introduced.
+
+Run the available project checks, such as linting, type checking, or build commands, when applicable. Do not claim that a test passed unless it was actually executed successfully.
+
+## Step 5 — Final Report
+
+Once the fix is complete, provide a concise report covering:
+
+- The identified root cause.
+- The files modified.
+- The changes implemented.
+- Whether and how the previous Markers panel fix was reused.
+- The tests performed and their results.
+- Any remaining issues or manual verification requirements.
+
+**Priority:** Fix the root cause, reuse proven solutions where appropriate, minimize changes, and preserve all existing functionality.

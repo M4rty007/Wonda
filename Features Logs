@@ -1,0 +1,125 @@
+# Wonda — Improve the Marker Controls and Organize the Map UI
+
+Implement the following UI/UX improvement in the existing Wonda project.
+
+## 1. Current behavior
+
+The map interface currently has:
+
+- A **Pin Point button**, represented by a pin point icon, which opens the Pin Points Panel that lists the existing map markers.
+- A **Marker Actions Pill** positioned above the Pin Point button. It contains three buttons, each representing a different marker type that can be added to the map.
+- The Marker Actions Pill is always visible, even when the user is not interacting with the marker controls.
+
+This makes the map interface more cluttered than necessary.
+
+## 2. Desired behavior
+
+### A. Make the Marker Actions Pill toggleable
+
+The Marker Actions Pill must be hidden by default.
+
+- When the user presses the existing Pin Point button, the Marker Actions Pill becomes visible.
+- When the user presses the Pin Point button again, the pill becomes hidden.
+- The visibility toggle must not accidentally open or close the Pin Points Panel.
+- Preserve the existing actions associated with the three marker-type buttons.
+
+### B. Add a fourth button to the pill
+
+Add a fourth button to the existing Marker Actions Pill. This button must represent the **Pin Points Panel**, which lists the markers already present on the map.
+
+When pressed, it must open or close the Pin Points Panel.
+
+The new button must:
+- Use an icon consistent with the existing Wonda design and icon library.
+- Have an accessible label or tooltip identifying it as the marker panel.
+- Reuse the existing panel-opening logic where possible instead of implementing a duplicate panel.
+- Toggle the panel's visibility without unintentionally triggering the other three marker actions.
+
+### C. Keep responsibilities separate
+
+The controls must have clearly separated responsibilities:
+
+- **Pin Point button:** shows or hides the Marker Actions Pill.
+- **Three existing marker buttons:** initiate their respective marker-creation workflows.
+- **New fourth pill button:** opens or closes the Pin Points Panel.
+
+Opening the pill must not automatically open the panel. Opening the panel must not automatically trigger marker creation.
+
+The Marker Actions Pill and the Pin Points Panel must remain independently controlled UI elements. Their visibility, position, padding, and layout must not become coupled.
+
+## 3. Interaction and layout requirements
+
+- Preserve the current Wonda color palette, icon style, spacing conventions, and overall visual identity.
+- Keep the Marker Actions Pill in its existing intended location relative to the Pin Point button.
+- Ensure the pill does not overlap important map controls or unnecessarily obstruct the map.
+- Maintain the existing responsive mobile layout and adapt the pill if needed to accommodate the fourth button.
+- Add a clear visual state to the Pin Point button when the pill is open, if consistent with the current design.
+- Provide accessible labels and keyboard interaction consistent with the existing application.
+- Avoid unnecessary animations or dependencies. If the project already has an animation system, use it for a subtle show/hide transition.
+
+## 4. Implementation approach
+
+Before editing:
+
+1. Locate the Pin Point button, Marker Actions Pill, Pin Points Panel, and their existing event handlers.
+2. Identify how marker creation and panel visibility are currently controlled.
+3. Determine the smallest reliable change that implements the desired behavior without duplicating existing logic.
+4. Check for shared state or event propagation that could cause the pill, panel, and marker actions to interfere with one another.
+
+Then implement the feature using the existing architecture and styling conventions. Do not rewrite unrelated components or remove working functionality.
+
+## 5. Acceptance criteria
+
+The implementation is complete only when all of the following are verified:
+
+1. On initial load, the Marker Actions Pill is hidden.
+2. Pressing the Pin Point button reveals the pill.
+3. Pressing the Pin Point button again hides the pill.
+4. Each of the original three buttons still initiates the correct marker-creation workflow.
+5. The new fourth button opens and closes the Pin Points Panel.
+6. Opening the pill alone does not open the panel.
+7. Opening or closing the panel does not trigger marker creation or unexpectedly toggle the pill.
+8. The panel and pill can be shown or hidden independently.
+9. Existing markers, marker editing, and other map functionality continue to work.
+10. The interface remains usable at relevant mobile and desktop breakpoints.
+
+Run the relevant available tests, type checks, and build command. Inspect the final diff and report the files changed, the behavior verified, and any remaining limitations.
+
+**Scope:** Implement this marker-controls improvement only. Preserve the existing Wonda interface and architecture. Do not claim completion unless the acceptance criteria have been tested.
+
+|*=------------------------------=*|
+
+# Feature: Expandir o painel de marcadores para cima
+
+## Objetivo
+Alterar o comportamento visual do painel de marcadores para que, ao adicionar um novo marcador, o painel se expanda para cima em vez de crescer para baixo.
+
+## Comportamento atual
+Ao adicionar um novo marcador, o painel aumenta sua altura na direção inferior, deslocando seu limite superior para cima apenas se o layout permitir, ou ocupando mais espaço abaixo do ponto de origem.
+
+## Comportamento desejado
+- Ao adicionar um novo marcador, o painel deve crescer para cima.
+- A borda inferior do painel deve permanecer fixa na mesma posição.
+- Os novos elementos devem ser acomodados acima dos elementos existentes, respeitando a ordem e a lógica atuais da lista.
+- A transição deve ser visualmente consistente e preservar as animações existentes, caso haja alguma.
+- O painel deve continuar funcionando normalmente em diferentes tamanhos de tela.
+
+## Restrições
+- Não alterar a lógica de criação, remoção ou edição de marcadores.
+- Não modificar os tipos de marcadores nem seus respectivos botões.
+- Não alterar a funcionalidade de abertura e fechamento do painel.
+- Não reposicionar outros componentes da interface.
+- Evitar refatorações desnecessárias.
+
+## Implementação sugerida
+Inspecionar o componente responsável pelo painel e sua estrutura de posicionamento. Ajustar o layout para ancorar o painel pela borda inferior, mantendo essa borda fixa enquanto a altura aumenta. Se necessário, revisar as regras de posicionamento, o fluxo dos elementos e as animações para garantir que a expansão ocorra exclusivamente para cima.
+
+Não resolver o problema apenas invertendo visualmente a ordem dos itens, pois isso pode alterar a sequência lógica dos marcadores.
+
+## Critérios de aceitação
+1. Ao adicionar um marcador, o limite inferior do painel permanece fixo.
+2. A altura do painel aumenta para cima.
+3. Os marcadores existentes continuam na ordem correta.
+4. Adicionar ou remover marcadores continua funcionando normalmente.
+5. Nenhum outro elemento da interface sofre deslocamentos indesejados.
+6. O comportamento permanece consistente em diferentes resoluções.

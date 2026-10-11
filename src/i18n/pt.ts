@@ -13,6 +13,8 @@ const pt: Record<string, string> = {
   'action.routes': 'Editor de rotas',
   'action.tide': 'Monitoramento das marés',
   'action.markers': 'Marcadores (pin points)',
+  'action.markerPill': 'Ações de marcador',
+  'action.markerPanel': 'Painel de marcadores',
   'menu.extra': 'Menus extras',
   'menu.settings': 'Menu de configurações',
   'menu.profile': 'Menu de perfil',

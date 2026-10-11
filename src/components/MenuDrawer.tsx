@@ -2,7 +2,6 @@ import { Settings, User, X } from 'lucide-react';
 import type { Wonda } from '../state';
 import { t } from '../i18n/translations';
 import { seedHazards, seedPoints } from '../data/seed';
-import RoutesList from './RoutesList';
 
 export default function MenuDrawer({ s }: { s: Wonda }) {
   const tr = (k: string) => t(s.lang, k);
@@ -27,8 +26,7 @@ export default function MenuDrawer({ s }: { s: Wonda }) {
           <div className="drawer-head">
             <strong>{
               s.menuView === 'settings' ? tr('nav.settings')
-              : s.menuView === 'profile' ? tr('nav.profile')
-              : tr('nav.routes')
+              : tr('nav.profile')
             }</strong>
             <button className="icon-btn" aria-label={tr('action.close')} onClick={() => s.setMenuView('main')}><X size={16} /></button>
           </div>
@@ -63,7 +61,6 @@ export default function MenuDrawer({ s }: { s: Wonda }) {
               <span className="badge demo">{tr('status.demo')}</span>
             </div>
           )}
-          {s.menuView === 'routes' && <RoutesList s={s} />}
         </div>
       )}
     </div>
