@@ -27,7 +27,7 @@
 .q.panel { background: var(--navy); color: #fff; }
 .q.panel.on { outline: 2px solid var(--cyan); outline-offset: 1px; }
 .marker-pill {
-  --pill-top: 515px;
+  --pill-top: 569px;
   --pill-right: 12px;
   top: var(--pill-top); right: var(--pill-right); }
 .fab.corner { position: absolute; bottom: 136px; width: 48px; height: 48px; color: var(--muted); }
